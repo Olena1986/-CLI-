@@ -5,13 +5,9 @@ import path from "path";
 const contactsPath = path.resolve('db', 'contacts.json');
 
 export const listContacts = async () => {
-  try {
-    const data = await fs.readFile(contactsPath, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    return [];
-  }
-};
+  const data = await fs.readFile(contactsPath);
+  return JSON.parse(data);
+}; 
 
 export const getContactById = async (contactId) => {
   const contacts = await listContacts();
